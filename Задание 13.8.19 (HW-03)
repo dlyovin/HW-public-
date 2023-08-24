@@ -1,0 +1,19 @@
+import random
+
+def get_age(age):
+if age < 18:
+return 0
+elif 18 <= age < 26:
+return 990
+else:
+return 1390
+
+n = int(input('Введите количество билетов: '))
+total = 0
+for i in range(n):
+age = int(input(f’Введите возраст {i+1}-го посетителя (0 для бесплатного билета): '))
+total += get_age(age)
+if n > 3:
+discount = 0.1 * total
+total -= discount
+print(total)
