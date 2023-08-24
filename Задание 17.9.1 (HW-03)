@@ -1,0 +1,38 @@
+def binary_search(arr, num):
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] < num:
+            low = mid + 1
+        elif arr[mid] > num:
+            high = mid - 1
+        else:
+            return mid
+
+def sort_list(arr):
+    for i in range(len(arr)):
+        for j in range(i+1, len(arr)):
+            if arr[i] > arr[j]:
+                arr[i], arr[j] = arr[j], arr[i]
+
+def main():
+    arr = []
+    num = int(input("Введите последовательность через пробел: "))
+
+    # Преобразуем введенную последовательность в список
+    for word in input().split():
+        arr.append(int(word))
+
+    # Сортируем список по возрастанию
+    sort_list(arr)
+
+    # Ищем позицию элемента, который меньше заданного пользователем числа
+    position = binary_search(arr, int(input(f"Введите число, которое меньше {num}: ")))
+
+    print(f"Позиция элемента, который меньше {num}, равна {position}")
+
+if __name__ == "__main__":
+    main()
